@@ -1,8 +1,6 @@
-import java.util.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 public class Word {
     ArrayList<String> arr1=new ArrayList<String>();
@@ -10,10 +8,11 @@ public class Word {
     ArrayList<String> arr3=new ArrayList<String>();
     ArrayList<String> arr4=new ArrayList<String>();
     Digraph vertex;
-    public Word(){
+    public Word() throws FileNotFoundException {
         this.synsets(f);
         vertex=new Digraph(arr1.size());
         this.hypernyms(f1);
+        System.out.println(vertex.size());
         int c=0;
         for(int i=0;i<vertex.size();i++){
             c=c+vertex.adj[i].size();
@@ -35,15 +34,15 @@ public class Word {
             String[] b=sc1.nextLine().split(",");
             arr3.add(b[0]);
             int c=0;
-            for(int i=0;i<b.length;i++){
+            for(int i=1;i<b.length;i++){
                 vertex.addEdge(Integer.parseInt(b[c]),Integer.parseInt(b[i]));
             }
-            for(int i=0;i<b.length;i++){
+            for(int i=1;i<b.length;i++){
                 arr4.add(b[i]);
             }
         }
     }
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws FileNotFoundException {
         Word w=new Word();
         w.synsets(f);
         w.hypernyms(f1);
