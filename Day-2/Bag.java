@@ -1,3 +1,4 @@
+//from Bob-Sedgewick
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 public class Bag<Item> implements Iterable<Item> {
