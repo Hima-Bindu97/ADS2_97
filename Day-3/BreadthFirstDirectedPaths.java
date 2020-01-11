@@ -1,11 +1,11 @@
-//from Bob-sedgewick
+import java.util.Queue;
 import java.util.Stack;
 public class BreadthFirstDirectedPaths {
     private static final int INFINITY=Integer.MAX_VALUE;
     private boolean[] marked;  
     private int[] edgeTo;      
     private int[] distTo;      
-    public BreadthFirstDirectedPaths(Digraph G, int s) {
+    public BreadthFirstDirectedPaths(graph G, int s) {
         marked=new boolean[G.V()];
         distTo=new int[G.V()];
         edgeTo=new int[G.V()];
@@ -14,7 +14,7 @@ public class BreadthFirstDirectedPaths {
         validateVertex(s);
         bfs(G,s);
     }
-    public BreadthFirstDirectedPaths(Digraph G, Iterable<Integer> sources) {
+    public BreadthFirstDirectedPaths(graph G, Iterable<Integer> sources) {
         marked=new boolean[G.V()];
         distTo=new int[G.V()];
         edgeTo=new int[G.V()];
@@ -23,7 +23,7 @@ public class BreadthFirstDirectedPaths {
         validateVertices(sources);
         bfs(G,sources);
     }
-    private void bfs(Digraph G, int s) {
+    private void bfs(graph G, int s) {
         Queue<Integer> q=new Queue<Integer>();
         marked[s]=true;
         distTo[s]=0;
