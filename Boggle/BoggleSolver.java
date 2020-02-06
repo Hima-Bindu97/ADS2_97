@@ -4,6 +4,9 @@ public class BoggleSolver{
     private Tries tries;
     private Digraph digraph;
     public BoggleSolver(String[] tries){
+        if(tries==null){
+            throw new IllegalArgumentException();
+        }
         this.tries=new Tries();
         for(String s:tries){
             this.tries.put(s);
@@ -93,6 +96,9 @@ public class BoggleSolver{
         }
     }
     public int scoreOf(String word){
+        if(word==null){
+            throw new IllegalArgumentException();
+        }
         if(tries.contains(word)){
             switch(word.length()){
                 case 0:return 0;
